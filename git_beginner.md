@@ -33,7 +33,7 @@ Version Control System
 
 ---v
 
-### WHY DO WE NEED VCS?
+### 버전관리, 왜 필요할까?
 
 ---v
 
@@ -53,8 +53,9 @@ Version Control System
 ---v
 
 ## Install(for linux)
-![slide-img3.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img3.png?raw=true)
-<br> ↓
+<small>git을 설치하자.</small>
+<br>![slide-img3.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img3.png?raw=true)
+<br>↓
 <br>![slide-img4.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img4.png?raw=true)
 <br><small>Install success!</small>
 ---v
@@ -69,14 +70,24 @@ $ git config --global user.email "<메일 주소>"
 
 ---v
 
-## 저장소 만들기
+## 새 로컬 저장소 만들기(init)
 ![slide-img6.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img6.png?raw=true)
 ```
 mkdir <디렉토리명>
 디렉토리 이동
 git init
 ```
-<small>저장소가 만들어졌다! </small>
+<small>새로운 로컬 저장소가 만들어졌다! </small>
+
+---v
+
+## 로컬 저장소 만들기(clone)
+
+원격 저장소를 로컬 저장소로 생성
+```
+git clone https://github.com/packetngin/rtos.git
+```
+
 ---v
 
 ## repository(저장소)
@@ -95,7 +106,7 @@ git init
 
 ---v
 
-## 파일 커밋하기
+## 파일 커밋(commit)하기
 ![slide-img7.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img7.png?raw=true)
 ```
 echo "git is ver easy!" > sample.txt  
@@ -104,37 +115,52 @@ git add sample.txt
 ```
 
 ---v
+
+commit시에 log를 남긴다<br>
+![slide-img10.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img10.png?raw=true)
 ```
-git commit -m "my first commit"
+git commit -m "[commit message]"
+git status
+git log
+```
+<small>git log를 통해 commit 확인!
+<br>참고: 'git commit'만 입력하여도 log를 남길 수 있음</small>
+---v
+
+## push
+로컬 저장소의 변경된 이력을 원격 저장소로 업로드
+![slide-img11.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img11.png?raw=true)
+<small>원격 저장소를 만드는 방법은 생략함
+<br>github.com을 이용하면 간단하게 생성 가능</small>
+
+---v
+## push
+<small>로컬 저장소의 변경사항을 업로드할 원격 저장소 등록하기</small>
+![slide-img12.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img12.png?raw=true)
+```
+git remote -v //현재 등록된 원격 저장소 목록 확인
+git remote add origin [remote repository address]
 ```
 
 ---v
-## work tree(작업트리)
- 
-
----v
-stage(스테이징)
-
----v
-commit
-
-
----v
-push
-
-
-푸싱(pushing)
-개발자가 직접 병경 사항을 중앙 저장소에 전송
----v
-push vs commit
+## push
+등록된 원격저장소로 푸싱(pushing)
+<br>![slide-img13.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img13.png?raw=true)
+```
+git push [remote repository address] [local repository name]
+```
 
 ---v
 
-merge
+## 변경사항 확인하기(diff)
+<small>'git diff' 명령어를 통해 변경사항을 추적할 수 있다!
+![slide-img14.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img14.png?raw=true)
+<br>sample.txt에서 단어 앞글짜가 모두 대문자로 변경됬음을 확인
+<br>commit을 통해 local저장소가 업데이트 되면, 'git diff master' 명령어를 통해서 master 로컬 저장소와 현재 변경사항이 없으므로 아무 출력이 되지않음을 확인할 수 있다.</small>
 
 ---v
+<small>이제 diff 명령을 통해 원격 저장소와 비교했고, 
+<br>푸싱하여 다시 변경사항을 확인하면 다음과 같다.</small>
+![slide-img15.png](https://github.com/chang-gyu/guide/blob/master/slide-img/slide-img15.png?raw=true)
 
-충돌 해결하기
-
----v
 
